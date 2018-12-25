@@ -1,0 +1,19 @@
+%% 10 March 2018 Code used
+%%
+New_hSpectrum = dsp.ArrayPlot(...
+'XLabel', 'Number of FFT bins',...
+'YLabel', 'Amplitudes',...
+'YLimits', [0, 5.5],...
+'Position', figposition([5 5 90 53]),...
+'PlotType','Line',...
+'ShowGrid',false);
+%%
+a=arduino;
+%%
+b=zeros(700,1);
+for i=1:700
+b(i) = readVoltage(a,'A0');
+New_hSpectrum(b);
+pause(0.08)
+end
+release(New_hSpectrum);
